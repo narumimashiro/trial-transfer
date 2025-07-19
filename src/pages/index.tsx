@@ -1,3 +1,4 @@
+import { DeviceConnection } from '@/components/deviceconnection'
 import FileListViewer from '@/components/filediplay'
 import { FileTransfer } from '@/components/filetransfer'
 
@@ -17,6 +18,7 @@ const ManagementTop = () => {
       <h1>Management Top Page</h1>
       <FileTransfer />
       <FileListViewer />
+      <DeviceConnection />
     </div>
   )
 }
