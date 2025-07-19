@@ -18,8 +18,12 @@ export const FileListViewer: React.FC = () => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`)
       const data = await response.json()
       setFiles(data.files || [])
-    } catch (err: any) {
-      setError(err.message || 'Failed to fetch files')
+    } catch (err) {
+      setError(
+        typeof err === 'object' && err !== null && 'message' in err
+          ? String((err as { message?: unknown }).message)
+          : 'Failed to fetch files'
+      )
     } finally {
       setLoading(false)
     }
