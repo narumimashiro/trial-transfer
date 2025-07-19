@@ -68,8 +68,7 @@ const DeviceConnect = () => {
       setMessage('✅ WebSocket接続成功')
     }
 
-    socket.onerror = (err) => {
-      console.error('❌ WebSocket 接続エラー', err)
+    socket.onerror = () => {
       setMessage('❌ WebSocket接続エラー')
     }
 
@@ -91,10 +90,10 @@ const DeviceConnect = () => {
           a.click()
           document.body.removeChild(a)
         } else {
-          console.log('📨 受信メッセージ:', data)
+          setMessage(`📬 メッセージ受信: ${data.message}`)
         }
       } catch (e) {
-        console.error('❌ メッセージの解析に失敗:', e)
+        setMessage(e instanceof Error ? e.message : '不明なエラー')
       }
     }
 
